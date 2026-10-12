@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بنك الأسئلة الأسبوعية الشامل: تصميم أمان الشبكات | منصة كودجي CodeG</title>
+    <style>
+        :root {
+            --primary: #0a0e1a;
+            --primary-light: #1e3a7a;
+            --accent: #6c5ce7;
+            --accent-2: #0984e3;
+            --gold: #f39c12;
+            --gold-light: #fdcb6e;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --success: #00b894;
+            --success-bg: #e6fffa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+            color: var(--text-dark);
+            line-height: 1.7;
+            padding-bottom: 60px;
+            min-height: 100vh;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            background: linear-gradient(135deg, #0a0e1a 0%, #1e3a7a 50%, #6c5ce7 100%);
+            color: #ffffff;
+            padding: 25px 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(30, 58, 122, 0.3);
+            border-bottom: 4px solid var(--gold);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(253, 203, 110, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(9, 132, 227, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+            flex-wrap: wrap;
+        }
+
+        /* ========== LOGOS ========== */
+        .logos-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-circle {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: white;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-circle:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-codeg {
+            background: linear-gradient(135deg, #6c5ce7, #0984e3);
+            border: 4px solid #a29bfe;
+            box-shadow: 0 0 25px rgba(108, 92, 231, 0.5);
+            font-size: 2.2rem;
+        }
+
+        .logo-instructor {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border: 4px solid #fdcb6e;
+            box-shadow: 0 0 25px rgba(243, 156, 18, 0.5);
+            font-size: 2.2rem;
+        }
+
+        /* ========== HEADER TEXT ========== */
+        .header-text {
+            text-align: right;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .platform-name {
+            font-size: 1.7rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #fdcb6e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .platform-tagline {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .instructor-info {
+            font-size: 0.95rem;
+            color: #fdcb6e;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(253, 203, 110, 0.15);
+            border: 1px solid rgba(253, 203, 110, 0.4);
+            padding: 6px 15px;
+            border-radius: 30px;
+        }
+
+        .instructor-info span {
+            color: #38bdf8;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        /* ========== HEADER BADGES ========== */
+        .header-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            margin-top: 15px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* ========== CONTAINER ========== */
+        .container {
+            max-width: 1000px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        /* ========== LESSON BANNER ========== */
+        .lesson-banner {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border: 2px solid var(--card-border);
+            border-right: 6px solid var(--accent);
+            border-radius: 16px;
+            padding: 25px 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-banner::before {
+            content: '🛡️';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 120px;
+            opacity: 0.05;
+            transform: rotate(-15deg);
+        }
+
+        .lesson-banner h1 {
+            color: var(--primary-light);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+        }
+
+        .lesson-banner p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== SECTION TITLE ========== */
+        .section-title {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin: 35px 0 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 25px rgba(30, 58, 122, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(253, 203, 110, 0.3));
+        }
+
+        .section-title span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title .count-badge {
+            background: rgba(253, 203, 110, 0.9);
+            color: var(--primary);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 900;
+        }
+
+        /* ========== QUESTION CARDS ========== */
+        .q-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .q-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent), var(--accent-2));
+        }
+
+        .q-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .q-text {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+            padding-right: 10px;
+        }
+
+        .q-source {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding-right: 10px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 650px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .opt-item {
+            background: var(--bg-light);
+            border: 1px solid #e2e8f0;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #334155;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .opt-item:hover {
+            background: #ebf8ff;
+            border-color: var(--accent-2);
+        }
+
+        .drill-item {
+            background: var(--bg-light);
+            border-right: 3px solid var(--gold);
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #1e293b;
+        }
+
+        /* ========== BUTTONS ========== */
+        .btn-toggle {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5px;
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+        }
+
+        .btn-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+        }
+
+        /* ========== ANSWER BOX ========== */
+        .answer-box {
+            display: none;
+            margin-top: 15px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            animation: fadeIn 0.4s ease-in-out;
+            line-height: 1.8;
+        }
+
+        .mcq-answer {
+            background: var(--success-bg);
+            border-right: 4px solid var(--success);
+            color: #0d5c3d;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .essay-answer {
+            background: #f0f9ff;
+            border-right: 4px solid var(--accent-2);
+            color: #0c4a6e;
+            font-size: 0.97rem;
+        }
+
+        .essay-answer strong {
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            background: linear-gradient(135deg, #0a0e1a, #1e3a7a);
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-top: 50px;
+            border-top: 4px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer strong {
+            color: #fdcb6e;
+            font-weight: 900;
+        }
+
+        footer .footer-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+            margin-top: 8px;
+        }
+
+        footer .contact-badge {
+            background: linear-gradient(135deg, #6c5ce7, #0984e3);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-text {
+                text-align: center;
+            }
+            .logos-container {
+                justify-content: center;
+            }
+            .logo-circle {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+            .platform-name {
+                font-size: 1.3rem;
+            }
+            .lesson-banner h1 {
+                font-size: 1.15rem;
+            }
+            .q-card {
+                padding: 15px;
+            }
+            .section-title {
+                font-size: 1rem;
+                padding: 12px 18px;
+            }
+            .btn-toggle {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== HEADER WITH LOGOS ========== -->
+<header>
+    <div class="header-content">
+        <div class="logos-container">
+            <div class="logo-circle logo-codeg">🧠</div>
+        </div>
+
+        <div class="header-text">
+            <div class="platform-name">منصة كودجي الرقمية</div>
+            <div class="platform-tagline">بنك الأسئلة الشامل: الدرس الثاني - تصميم أمان الشبكات</div>
+            <div class="instructor-info">
+                إعداد: مهندس أندرو مجدي | <span>01555772562</span>
+            </div>
+        </div>
+
+        <div class="logos-container">
+            <div class="logo-circle logo-instructor">👨‍🏫</div>
+        </div>
+    </div>
+
+    <div class="header-badges">
+        <span class="badge">🛡️ الوحدة الثانية: الأمن السيبراني</span>
+        <span class="badge">🔐 الدرس الثاني: تصميم أمان الشبكات</span>
+        <span class="badge">📚 بنك أسئلة الكتاب والتقييمات بالكامل</span>
+        <span class="badge">🇪🇬 مصر</span>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="lesson-banner">
+        <h1>🔐 بنك الأسئلة الشامل: تصميم أمان الشبكات (Network Security Design)</h1>
+        <p>جميع أسئلة كتاب التقييمات والأداءات الرسمية (المهام الأدائية، الواجبات المنزلية، النماذج A و B و C) + جميع تمارين وأنشطة الكتاب المدرسي كاملة دون استثناء</p>
+    </div>
+
+    <!-- ========== SECTION 1: MCQ ========== -->
+    <div class="section-title">
+        <span>📝 أولاً: أسئلة الاختيار من متعدد (كاملة من التقييمات والكتاب المدرسي)</span>
+        <span class="count-badge">20 سؤالاً</span>
+    </div>
+
+    <!-- mcq-1 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 1 - مهام أدائية)</div>
+        <div class="q-text">1. أي من الخيارات التالية يُعد التعريف الدقيق لمفهوم «الدفاع في العمق» في أمان الشبكات؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) الاعتماد الكامل على جدار حماية قوي عند حدود الشبكة فقط.</div>
+            <div class="opt-item">ب) استخدام طبقات متعددة من الضوابط الأمنية بحيث تقلل الطبقات الأخرى الخطر إذا فشلت إحدى الطبقات.</div>
+            <div class="opt-item">ج) منح الثقة التلقائية لجميع الأجهزة الموجودة داخل النطاق الجغرافي للمؤسسة.</div>
+            <div class="opt-item">د) تشفير حركة المرور بالكامل حصرياً عند استخدام شبكات Wi-Fi العامة.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-1')">👁️ إظهار الإجابة</button>
+        <div id="mcq-1" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ب) استخدام طبقات متعددة من الضوابط الأمنية بحيث تقلل الطبقات الأخرى الخطر إذا فشلت إحدى الطبقات.</div>
+    </div>
+
+    <!-- mcq-2 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 1 - مهام أدائية + الفترة 3 نموذج B)</div>
+        <div class="q-text">2. ما هو المصطلح الذي يُطلق على نظام أو برنامج يراقب حركة مرور الشبكة ويسمح بها أو يمنعها وفق قواعد أمنية محددة؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) الشبكة الافتراضية الخاصة (VPN).</div>
+            <div class="opt-item">ب) المنطقة المعزولة (DMZ).</div>
+            <div class="opt-item">ج) جدار الحماية (Firewall).</div>
+            <div class="opt-item">د) نهج انعدام الثقة (Zero Trust).</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-2')">👁️ إظهار الإجابة</button>
+        <div id="mcq-2" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ج) جدار الحماية (Firewall).</div>
+    </div>
+
+    <!-- mcq-3 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 1 - واجب منزلي + الفترة 3 نموذج C)</div>
+        <div class="q-text">3. ما هو المصطلح الذي يشير إلى اتصال أو شبكة منطقية خاصة تُنشأ عبر شبكة عامة مثل الإنترنت وتستخدم التشفير لحماية البيانات؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) جدار الحماية.</div>
+            <div class="opt-item">ب) الشبكة الافتراضية الخاصة (VPN).</div>
+            <div class="opt-item">ج) المنطقة المعزولة (DMZ).</div>
+            <div class="opt-item">د) نهج انعدام الثقة.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-3')">👁️ إظهار الإجابة</button>
+        <div id="mcq-3" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ب) الشبكة الافتراضية الخاصة (VPN).</div>
+    </div>
+
+    <!-- mcq-4 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 1 - واجب منزلي)</div>
+        <div class="q-text">4. أي من الخيارات الآتية يمثل الاستخدام الأنسب والأكثر شيوعاً للشبكة الافتراضية الخاصة (VPN) في بيئات العمل الحديثة؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) الاتصال بأمان بشبكة المؤسسة من المنزل أو أثناء التنقل والعمل عن بعد.</div>
+            <div class="opt-item">ب) حماية الأجهزة الطرفية من الفيروسات وإزالتها تلقائياً بدون برامج مساعدة.</div>
+            <div class="opt-item">ج) مراقبة حركة مرور الشبكة المحلية ومنع البريد الإلكتروني العشوائي.</div>
+            <div class="opt-item">د) توفير منصات تتيح للمستخدمين نشر المحتوى ومشاركته بسرعة فائقة.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-4')">👁️ إظهار الإجابة</button>
+        <div id="mcq-4" class="answer-box mcq-answer">✔ الإجابة الصحيحة: أ) الاتصال بأمان بشبكة المؤسسة من المنزل أو أثناء التنقل والعمل عن بعد.</div>
+    </div>
+
+    <!-- mcq-5 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 2 - مهام أدائية)</div>
+        <div class="q-text">5. ماذا يُقصد بمصطلح «المنطقة المعزولة (DMZ)» في هيكلة أمان الشبكات؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) شبكة عامة مفتوحة بالكامل تتيح للمخترقين الوصول إلى قواعد البيانات الحساسة.</div>
+            <div class="opt-item">ب) منطقة توضع فيها الخوادم المعرضة للشبكة الخارجية بشكل منفصل عن الشبكة الداخلية للمؤسسة.</div>
+            <div class="opt-item">ج) برمجية خبيثة تقوم بمراقبة حركة المرور وتعديل قواعد جدار الحماية تلقائياً.</div>
+            <div class="opt-item">د) خط خاص افتراضي مشفر يربط بين الفروع المختلفة عبر الإنترنت العام.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-5')">👁️ إظهار الإجابة</button>
+        <div id="mcq-5" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ب) منطقة توضع فيها الخوادم المعرضة للشبكة الخارجية بشكل منفصل عن الشبكة الداخلية للمؤسسة.</div>
+    </div>
+
+    <!-- mcq-6 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 2 - مهام أدائية)</div>
+        <div class="q-text">6. ما هي الفرضية الأساسية التي يعتمد عليها «نهج انعدام الثقة (Zero Trust)» في تأمين موارد المؤسسة؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) اعتبار كل جهاز أو مستخدم داخل شبكة المؤسسة موثوقاً تماماً بشكل تلقائي.</div>
+            <div class="opt-item">ب) عدم منح الثقة تلقائياً لمستخدم أو جهاز لمجرد وجوده داخل الشبكة أو ملكيته للمؤسسة وفحص الهوية والصلاحيات والسياق.</div>
+            <div class="opt-item">ج) الاعتماد المطلق على المحيط الأمني الخارجي وعدم فحص التطبيقات الداخلية.</div>
+            <div class="opt-item">د) تشفير رسائل البريد الإلكتروني فقط دون الاهتمام بصلاحيات الوصول للبيانات.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-6')">👁️ إظهار الإجابة</button>
+        <div id="mcq-6" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ب) عدم منح الثقة تلقائياً لمستخدم أو جهاز لمجرد وجوده داخل الشبكة أو ملكيته للمؤسسة وفحص الهوية والصلاحيات والسياق.</div>
+    </div>
+
+    <!-- mcq-7 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 2 - أداءات منزلية + الفترة 3 نموذج B)</div>
+        <div class="q-text">7. ما هو المفهوم الذي يصف الحدود التقليدية التي تفترض أن ما بداخل شبكة المؤسسة آمن تماماً وما خارجها غير آمن والتي طمستها الخدمات السحابية والعمل عن بعد؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) المنطقة المعزولة.</div>
+            <div class="opt-item">ب) المحيط الأمني (Security Perimeter).</div>
+            <div class="opt-item">ج) الحوسبة الطرفية.</div>
+            <div class="opt-item">د) التراكب الكمي.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-7')">👁️ إظهار الإجابة</button>
+        <div id="mcq-7" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ب) المحيط الأمني (Security Perimeter).</div>
+    </div>
+
+    <!-- mcq-8 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 2 - أداءات منزلية + الفترة 3 نموذج B)</div>
+        <div class="q-text">8. أي من طبقات «الدفاع في العمق» التالية ترتبط ارتباطاً مباشراً بتثبيت برامج مكافحة الفيروسات وتحديث نظام التشغيل؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) مدخل الشبكة.</div>
+            <div class="opt-item">ب) مسار الاتصال.</div>
+            <div class="opt-item">ج) وضع الخوادم.</div>
+            <div class="opt-item">د) الأجهزة الطرفية (Endpoints).</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-8')">👁️ إظهار الإجابة</button>
+        <div id="mcq-8" class="answer-box mcq-answer">✔ الإجابة الصحيحة: د) الأجهزة الطرفية (Endpoints).</div>
+    </div>
+
+    <!-- mcq-9 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 3 - تقييم أسبوعي نموذج A)</div>
+        <div class="q-text">9. ماذا تُسمى المنطقة التي تُعزل فيها الخوادم المواجهة للجمهور عن الشبكة الداخلية لتقليل أثر الهجمات؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) المحيط الأمني.</div>
+            <div class="opt-item">ب) المنطقة المعزولة (DMZ).</div>
+            <div class="opt-item">ج) مسار الاتصال.</div>
+            <div class="opt-item">د) الأجهزة الطرفية.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-9')">👁️ إظهار الإجابة</button>
+        <div id="mcq-9" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ب) المنطقة المعزولة (DMZ).</div>
+    </div>
+
+    <!-- mcq-10 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 3 - تقييم أسبوعي نموذج A)</div>
+        <div class="q-text">10. ما هو المصطلح الذي يعبر عن نهج أمني لا يمنح الثقة تلقائياً لمستخدم أو جهاز لمجرد وجوده داخل الشبكة؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) الدفاع في العمق.</div>
+            <div class="opt-item">ب) جدار الحماية.</div>
+            <div class="opt-item">ج) نهج انعدام الثقة (Zero Trust).</div>
+            <div class="opt-item">د) الشبكة الافتراضية الخاصة.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-10')">👁️ إظهار الإجابة</button>
+        <div id="mcq-10" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ج) نهج انعدام الثقة (Zero Trust).</div>
+    </div>
+
+    <!-- mcq-11 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 3 - تقييم أسبوعي نموذج A)</div>
+        <div class="q-text">11. أي من الخيارات الآتية يمثل الاستخدام الرئيسي للشبكة الافتراضية الخاصة (VPN) لربط المكاتب أو الموظفين؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) تشفير الاتصال وحماية البيانات عبر شبكات غير موثوقة أو العمل عن بعد.</div>
+            <div class="opt-item">ب) التخلص التلقائي من الفيروسات الموجودة على القرص الصلب.</div>
+            <div class="opt-item">ج) تسريع اتصالات الإنترنت العامة بدون الحاجة لكلمات مرور.</div>
+            <div class="opt-item">د) توفير واجهة رسومية لإدارة قواعد البيانات الضخمة.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-11')">👁️ إظهار الإجابة</button>
+        <div id="mcq-11" class="answer-box mcq-answer">✔ الإجابة الصحيحة: أ) تشفير الاتصال وحماية البيانات عبر شبكات غير موثوقة أو العمل عن بعد.</div>
+    </div>
+
+    <!-- mcq-12 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 3 - تقييم أسبوعي نموذج B)</div>
+        <div class="q-text">12. التقنية التي تنشئ خطاً خاصاً افتراضياً مشفراً عبر الإنترنت للاتصال الآمن من موقع بعيد هي:</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) جدار الحماية.</div>
+            <div class="opt-item">ب) الشبكة الافتراضية الخاصة (VPN).</div>
+            <div class="opt-item">ج) المنطقة المعزولة.</div>
+            <div class="opt-item">د) نهج انعدام الثقة.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-12')">👁️ إظهار الإجابة</button>
+        <div id="mcq-12" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ب) الشبكة الافتراضية الخاصة (VPN).</div>
+    </div>
+
+    <!-- mcq-13 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 3 - تقييم أسبوعي نموذج A)</div>
+        <div class="q-text">13. أي من الأجهزة أو الأنظمة التالية يراقب حركة مرور الشبكة ويسمح بها أو يمنعها وفق قواعد أمنية محددة؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) جدار الحماية (Firewall).</div>
+            <div class="opt-item">ب) المنطقة المعزولة.</div>
+            <div class="opt-item">ج) الشبكة الافتراضية الخاصة.</div>
+            <div class="opt-item">د) الحوسبة الطرفية.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-13')">👁️ إظهار الإجابة</button>
+        <div id="mcq-13" class="answer-box mcq-answer">✔ الإجابة الصحيحة: أ) جدار الحماية (Firewall).</div>
+    </div>
+
+    <!-- mcq-14 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 3 - تقييم أسبوعي نموذج C)</div>
+        <div class="q-text">14. منطقة توضع فيها الخوادم المعرضة للشبكة الخارجية بشكل منفصل عن الشبكة الداخلية تسمى:</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) جدار الحماية.</div>
+            <div class="opt-item">ب) المنطقة المعزولة (DMZ).</div>
+            <div class="opt-item">ج) الشبكة الافتراضية الخاصة.</div>
+            <div class="opt-item">د) الأجهزة الطرفية.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-14')">👁️ إظهار الإجابة</button>
+        <div id="mcq-14" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ب) المنطقة المعزولة (DMZ).</div>
+    </div>
+
+    <!-- mcq-15 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 3 - تقييم أسبوعي نموذج C)</div>
+        <div class="q-text">15. نهج أمني لا يمنح الثقة تلقائياً لمستخدم أو جهاز لمجرد وجوده داخل الشبكة أو ملكيته للمؤسسة هو:</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) الدفاع في العمق.</div>
+            <div class="opt-item">ب) نهج انعدام الثقة (Zero Trust).</div>
+            <div class="opt-item">ج) المحيط الأمني.</div>
+            <div class="opt-item">د) جدار الحماية.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-15')">👁️ إظهار الإجابة</button>
+        <div id="mcq-15" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ب) نهج انعدام الثقة (Zero Trust).</div>
+    </div>
+
+    <!-- mcq-16 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 3 - تقييم أسبوعي نموذج C)</div>
+        <div class="q-text">16. أي مما يلي يمثل الطبقة الأولى (مدخل الشبكة) في استراتيجية الدفاع في العمق؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) تشفير الاتصال باستخدام الشبكة الافتراضية الخاصة.</div>
+            <div class="opt-item">ب) منع الاتصال غير المصرح به باستخدام جدار الحماية.</div>
+            <div class="opt-item">ج) فصل الخوادم المواجهة للجمهور باستخدام المنطقة المعزولة.</div>
+            <div class="opt-item">د) تثبيت برنامج مكافحة الفيروسات على الأجهزة الطرفية.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-16')">👁️ إظهار الإجابة</button>
+        <div id="mcq-16" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ب) منع الاتصال غير المصرح به باستخدام جدار الحماية.</div>
+    </div>
+
+    <!-- mcq-17 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: الكتاب المدرسي (قسم تدرب صـ 63)</div>
+        <div class="q-text">17. من بين الخيارات التالية، اختر الخيار الذي لا يمثل استخداماً مناسباً للشبكة الافتراضية الخاصة (VPN):</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) الاتصال بأمان من المنزل بشبكة المؤسسة.</div>
+            <div class="opt-item">ب) ربط المكاتب في مواقع مختلفة بأمان.</div>
+            <div class="opt-item">ج) الحذف التلقائي للملفات المصابة بالفيروسات.</div>
+            <div class="opt-item">د) تشفير محتوى الاتصال على شبكة Wi-Fi العامة.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-17')">👁️ إظهار الإجابة</button>
+        <div id="mcq-17" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ج) الحذف التلقائي للملفات المصابة بالفيروسات (لأن هذا عمل برامج مكافحة الفيروسات).</div>
+    </div>
+
+    <!-- mcq-18 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: الكتاب المدرسي (قسم تمارين صـ 68)</div>
+        <div class="q-text">18. من بين الخيارات التالية، اختر السبب الأنسب لاستخدام منطقة معزولة (DMZ):</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) لتحسين سرعة الاتصال بالإنترنت.</div>
+            <div class="opt-item">ب) لتعريض جميع خوادم وقواعد بيانات المؤسسة للخارج.</div>
+            <div class="opt-item">ج) لمنع الضرر عن الشبكة الداخلية حتى لو تعرض خادم مواجه للجمهور للهجوم.</div>
+            <div class="opt-item">د) للكشف عن الفيروسات وإزالتها تلقائياً.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-18')">👁️ إظهار الإجابة</button>
+        <div id="mcq-18" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ج) لمنع الضرر عن الشبكة الداخلية حتى لو تعرض خادم مواجه للجمهور للهجوم.</div>
+    </div>
+
+    <!-- mcq-19 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: الكتاب المدرسي (قسم تمارين صـ 69)</div>
+        <div class="q-text">19. من بين الخيارات التالية، اختر الخيار الذي يصف مفهوم نهج انعدام الثقة (Zero Trust) بأنسب طريقة:</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) الوصول من داخل شبكة المؤسسة آمن، لذا فإن التحقق غير ضروري.</div>
+            <div class="opt-item">ب) جدار الحماية وحده كافٍ لحماية الشبكة بالكامل.</div>
+            <div class="opt-item">ج) لا تُمنح الثقة تلقائياً بناءً على موقع المستخدم أو الجهاز، ويُتحقق من كل طلب وصول وفق الهوية والصلاحيات والسياق.</div>
+            <div class="opt-item">د) يحتاج فقط الوصول من الخارج إلى المراقبة والتحقق.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-19')">👁️ إظهار الإجابة</button>
+        <div id="mcq-19" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ج) لا تُمنح الثقة تلقائياً بناءً على موقع المستخدم أو الجهاز، ويُتحقق من كل طلب وصول وفق الهوية والصلاحيات والسياق.</div>
+    </div>
+
+    <!-- mcq-20 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: الكتاب المدرسي (جدول طبقات الدفاع في العمق صـ 57)</div>
+        <div class="q-text">20. أي من طبقات الدفاع في العمق تختص بـ «تشفير مسار الاتصال وحماية البيانات أثناء النقل»؟</div>
+        <div class="options-grid">
+            <div class="opt-item">أ) الطبقة 1: مدخل الشبكة.</div>
+            <div class="opt-item">ب) الطبقة 2: مسار الاتصال (الشبكة الافتراضية الخاصة VPN).</div>
+            <div class="opt-item">ج) الطبقة 3: وضع الخوادم.</div>
+            <div class="opt-item">د) الطبقة 4: الأجهزة الطرفية.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('mcq-20')">👁️ إظهار الإجابة</button>
+        <div id="mcq-20" class="answer-box mcq-answer">✔ الإجابة الصحيحة: ب) الطبقة 2: مسار الاتصال (الشبكة الافتراضية الخاصة VPN).</div>
+    </div>
+
+    <!-- ========== SECTION 2: TEXTBOOK DRILLS ========== -->
+    <div class="section-title">
+        <span>📋 ثانياً: تدريبات وأنشطة الكتاب المدرسي (الصواب والخطأ، المصطلحات، المزاوجة، إكمال الفراغات)</span>
+        <span class="count-badge">5 مجموعات تدريبية</span>
+    </div>
+
+    <!-- drill-1 -->
+    <div class="q-card">
+        <div class="q-text">1. تمرين الصواب والخطأ (من الكتاب المدرسي صـ 59 - 60):</div>
+        <div style="margin-bottom:12px;">
+            <div class="drill-item">أ- يسمح جدار الحماية بالاتصال أو يمنعه استناداً إلى قواعد محددة مسبقاً. [ ]</div>
+            <div class="drill-item">ب- يمكن أن يقلل استخدام الشبكة الافتراضية الخاصة من مخاطر التنصت حتى على شبكة Wi-Fi عامة. [ ]</div>
+            <div class="drill-item">جـ- المنطقة المعزولة نظام يعرّض جميع الخوادم للخارج. [ ]</div>
+            <div class="drill-item">د- الدفاع في العمق هو مفهوم تكديس عدة إجراءات أمنية في طبقات متعددة. [ ]</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('drill-1')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="drill-1" class="answer-box essay-answer">• أ) ( ○ صواب ) — يتحكم جدار الحماية في الاتصال استناداً إلى القواعد.<br>
+• ب) ( ○ صواب ) — تشفّر الشبكة الافتراضية الخاصة الاتصال، مما يقلل من مخاطر التنصت على شبكة Wi-Fi العامة.<br>
+• جـ) ( ✕ خطأ ) — المنطقة المعزولة هي منطقة توضع فيها الخوادم المواجهة للجمهور فقط بشكل منفصل عن الشبكة الداخلية، وليست نظاماً يعرّض جميع الخوادم.<br>
+• د) ( ○ صواب ) — هذا هو التعريف الدقيق للدفاع في العمق.</div>
+    </div>
+
+    <!-- drill-2 -->
+    <div class="q-card">
+        <div class="q-text">2. تمرين المزاوجة والمصطلحات (من الكتاب المدرسي صـ 60):</div>
+        <div style="margin-bottom:12px;">
+            <div class="drill-item">طابق كل وصف بالأنسب من المصطلحات: [جدار الحماية - الشبكة الافتراضية الخاصة - المنطقة المعزولة]:</div>
+            <div class="drill-item">أ- تقنية تنشئ خطاً خاصاً افتراضياً مشفراً عبر الإنترنت للاتصال الآمن من موقع بعيد.</div>
+            <div class="drill-item">ب- منطقة تُوضع فيها الخوادم المعرّضة للخارج بشكل منفصل عن الشبكة الداخلية.</div>
+            <div class="drill-item">جـ- نظام يسمح بالاتصال أو يمنعه استناداً إلى قواعد محددة مسبقاً.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('drill-2')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="drill-2" class="answer-box essay-answer">• أ) <strong>الشبكة الافتراضية الخاصة (VPN)</strong>.<br>
+• ب) <strong>المنطقة المعزولة (DMZ)</strong>.<br>
+• جـ) <strong>جدار الحماية (Firewall)</strong>.</div>
+    </div>
+
+    <!-- drill-3 -->
+    <div class="q-card">
+        <div class="q-text">3. تمرين المصطلحات والاختصارات المباشرة (من الكتاب المدرسي صـ 62):</div>
+        <div style="margin-bottom:12px;">
+            <div class="drill-item">1. ما المصطلح الذي يصف نظاماً أو برنامجاً يراقب حركة مرور الشبكة ويسمح بها أو يمنعها وفق قواعد أمنية؟</div>
+            <div class="drill-item">2. ما الاختصار الذي يصف اتصالاً منطقياً خاصاً يحمي البيانات عبر شبكة عامة؟</div>
+            <div class="drill-item">3. ما الاختصار المكوّن من ثلاثة أحرف للمنطقة التي تُوضع فيها الخوادم المعرّضة للخارج بشكل منفصل؟</div>
+            <div class="drill-item">4. ما المصطلح الذي يُطلق على مفهوم تكديس عدة إجراءات أمنية؟</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('drill-3')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="drill-3" class="answer-box essay-answer">1. <strong>جدار الحماية (Firewall)</strong>.<br>
+2. <strong>VPN</strong> (Virtual Private Network).<br>
+3. <strong>DMZ</strong> (Demilitarized Zone).<br>
+4. <strong>الدفاع في العمق (Defense in Depth)</strong>.</div>
+    </div>
+
+    <!-- drill-4 -->
+    <div class="q-card">
+        <div class="q-text">4. تمرين تصنيف إجراءات طبقات الدفاع المتعدد (من الكتاب المدرسي صـ 63):</div>
+        <div style="margin-bottom:12px;">
+            <div class="drill-item">بّين أي طبقة من طبقات الدفاع المتعدد ينتمي إليها كل إجراء أمني:</div>
+            <div class="drill-item">أ- منع الاتصال غير المصرح به باستخدام جدار الحماية.</div>
+            <div class="drill-item">ب- تشفير الاتصال باستخدام الشبكة الافتراضية الخاصة.</div>
+            <div class="drill-item">جـ- تثبيت برنامج مكافحة الفيروسات والحفاظ على تحديث نظام التشغيل.</div>
+            <div class="drill-item">د- فصل الخوادم المواجهة للجمهور عن الشبكة الداخلية باستخدام المنطقة المعزولة.</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('drill-4')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="drill-4" class="answer-box essay-answer">• أ- <strong>الطبقة 1: مدخل الشبكة</strong>.<br>
+• ب- <strong>الطبقة 2: مسار الاتصال</strong>.<br>
+• جـ- <strong>الطبقة 4: الأجهزة الطرفية</strong>.<br>
+• د- <strong>الطبقة 3: وضع الخوادم</strong>.</div>
+    </div>
+
+    <!-- drill-5 -->
+    <div class="q-card">
+        <div class="q-text">5. تمرين اقرأ الفقرة واملاً الفراغات (من الكتاب المدرسي صـ 68):</div>
+        <div style="margin-bottom:12px;">
+            <div class="drill-item">«لحماية شبكة مؤسسة، تُستخدم طبقات متعددة. يراقب ( أ ) حركة الشبكة ويسمح بها أو يمنعها وفق قواعد. وتوضع الخوادم العامة في ( ب ) منفصلة عن الشبكة الداخلية. ويُحمى الاتصال البعيد عبر ( ج ). ويسمى استخدام طبقات متعددة من الضوابط الأمنية ( د ).»</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer('drill-5')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="drill-5" class="answer-box essay-answer">• ( أ ): <strong>جدار الحماية (Firewall)</strong>.<br>
+• ( ب ): <strong>المنطقة المعزولة (DMZ)</strong>.<br>
+• ( ج ): <strong>الشبكة الافتراضية الخاصة (VPN)</strong>.<br>
+• ( د ): <strong>الدفاع في العمق (Defense in Depth)</strong>.</div>
+    </div>
+
+    <!-- ========== SECTION 3: ESSAY & APPLIED QUESTIONS ========== -->
+    <div class="section-title">
+        <span>✍️ ثالثاً: الأسئلة المقالية والتحليلية والسيناريوهات التطبيقية (كاملة دون حذف)</span>
+        <span class="count-badge">12 سؤالاً تفصيلياً</span>
+    </div>
+
+    <!-- ess-1 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 1 مهام أدائية) + الكتاب المدرسي (سؤال نمط الامتحان صـ 61)</div>
+        <div class="q-text">س1: اشرح ما المقصود بمفهوم «الدفاع في العمق» في أمان الشبكات، ولماذا يُعد توفير طبقات متعددة أضمن من الاعتماد على وسيلة حماية واحدة؟</div>
+        <button class="btn-toggle" onclick="toggleAnswer('ess-1')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="ess-1" class="answer-box essay-answer">• <strong>المفهوم:</strong> هو استخدام طبقات متعددة ومتكاملة من الضوابط الأمنية للدفاع عن موارد المؤسسة.<br>
+• <strong>سبب الأفضلية:</strong> لأن الاعتماد على وسيلة واحدة (مثل جدار الحماية وحده) يعني أن اختراقها يكشف النظام بالكامل. أما عند تكديس الإجراءات في طبقات، فإنه إذا فشلت أو اختُرقت إحدى الطبقات، تتولى الطبقات الأخرى تقليل الخطر والحد من أثر الاختراق ومنع المهاجم من الوصول إلى بقية الشبكة.</div>
+    </div>
+
+    <!-- ess-2 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 1 مهام أدائية) + الكتاب المدرسي صـ 55</div>
+        <div class="q-text">س2: وضح الدور الأساسي لجدار الحماية (Firewall) في أمان الشبكات، واذكر مثالاً على كيفية تحكمه في حركة المرور بين خادم الويب وقاعدة البيانات.</div>
+        <button class="btn-toggle" onclick="toggleAnswer('ess-2')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="ess-2" class="answer-box essay-answer">• <strong>الدور الأساسي:</strong> نظام أو برنامج يراقب حركة مرور الشبكة الواردة والصادرة ويسمح بها أو يمنعها وفق قواعد أمنية محددة عند حدود الشبكة أو بين أجزائها.<br>
+• <strong>المثال:</strong> يقوم جدار الحماية بالسماح لحركة مرور الإنترنت بالوصول إلى خادم الويب المتاح للجمهور، بينما يمنع الوصول الخارجي المباشر إلى خادم قاعدة البيانات الداخلية الحساسة، ولا يسمح بالاتصال بها إلا من خلال خادم الويب ووفق منافذ وقواعد مشددة.</div>
+    </div>
+
+    <!-- ess-3 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 1 واجب منزلي) + الكتاب المدرسي صـ 55</div>
+        <div class="q-text">س3: ما المقصود بمصطلح «الشبكة الافتراضية الخاصة (VPN)»؟ واذكر اثنين من استخداماتها الرئيسية في بيئات العمل الحديثة.</div>
+        <button class="btn-toggle" onclick="toggleAnswer('ess-3')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="ess-3" class="answer-box essay-answer">• <strong>المفهوم:</strong> اتصال أو شبكة منطقية خاصة تُنشأ عبر شبكة عامة (كالإنترنت)، وتستخدم عادة التشفير وتقنيات النفق (Tunneling) لحماية ونقل البيانات بأمان بين الطرفين.<br>
+• <strong>الاستخدامات الرئيسية:</strong><br>
+1. تمكين الموظفين من الاتصال بأمان بشبكة المؤسسة من المنزل أو أثناء السفر والعمل عن بُعد.<br>
+2. ربط الفروع والمكاتب المتباعدة جغرافياً للمؤسسة عبر شبكة الإنترنت العامة بأمان تام.<br>
+3. تشفير البيانات وحمايتها من التنصت عند استخدام شبكات الاتصال العامة مثل Wi-Fi.</div>
+    </div>
+
+    <!-- ess-4 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 1 واجب منزلي) + الكتاب المدرسي (توقف وفكّر صـ 56)</div>
+        <div class="q-text">س4: لماذا يكون وضع خادم ويب عام في «المنطقة المعزولة (DMZ)» أكثر أماناً من وضعه مباشرة داخل الشبكة الداخلية للمؤسسة؟</div>
+        <button class="btn-toggle" onclick="toggleAnswer('ess-4')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="ess-4" class="answer-box essay-answer">لأن خوادم الويب العامة تكون معرضة للإنترنت ومستهدفة باستمرار بالهجمات. فإذا تم وضع الخادم داخل الشبكة الداخلية مباشرة وتعرّض للاختراق، فسيتمكن المهاجم من الوصول الفوري إلى أجهزة الموظفين وقواعد البيانات الحساسة. أما عند وضعه في «المنطقة المعزولة (DMZ)» المفصولة بجدران حماية، فحتى لو تم اختراق الخادم العام، تظل الشبكة الداخلية للمؤسسة محمية ومعزولة عن الضرر.</div>
+    </div>
+
+    <!-- ess-5 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 2 مهام أدائية) + الكتاب المدرسي صـ 58-59</div>
+        <div class="q-text">س5: قارن بالتفصيل بين الأمان التقليدي (المحيط الأمني) و«نهج انعدام الثقة (Zero Trust)» من حيث التعامل مع مستخدمي الشبكة الداخلية.</div>
+        <button class="btn-toggle" onclick="toggleAnswer('ess-5')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="ess-5" class="answer-box essay-answer">• <strong>الأمان التقليدي (المحيط الأمني):</strong> يفترض أن "داخل شبكة المؤسسة آمن، وخارجها خطر". بمجرد أن يتجاوز المستخدم أو الجهاز جدار الحماية الخارجي، يُمنح الثقة تلقائياً دون فحص مستمر، وتُتاح له صلاحيات واسعة داخل الشبكة.<br>
+• <strong>نهج انعدام الثقة (Zero Trust):</strong> لا يمنح الثقة تلقائياً لأي مستخدم أو جهاز لمجرد وجوده داخل الشبكة أو ملكيته للمؤسسة. يتم فحص الهوية، الصلاحيات المحددة، وسياق الطلب (مثل نوع الجهاز، الموقع، وحالة الأمان) عند كل عملية وصول إلى أي مورد.</div>
+    </div>
+
+    <!-- ess-6 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 2 واجب منزلي) + الكتاب المدرسي صـ 58</div>
+        <div class="q-text">س6: اشرح كيف تغيرت الفرضيات الأمنية حول «المحيط الأمني» التقليدي في ظل انتشار الحوسبة السحابية والعمل عن بعد.</div>
+        <button class="btn-toggle" onclick="toggleAnswer('ess-6')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="ess-6" class="answer-box essay-answer">في الماضي، كانت جميع الأجهزة والبيانات تقع داخل مبنى المؤسسة خلف جدار حماية واضح المعالم. ومع انتشار الخدمات السحابية ونقل البيانات إليها، واعتماد الموظفين على العمل عن بعد والاتصال من أجهزة متعددة ومواقع مختلفة، تلاشت الحدود بين "الداخل" و"الخارج"، وطُمست أسوار المحيط الأمني، وأصبحت التهديدات قادرة على الظهور من داخل الشبكة تماماً كخارجها، مما جعل التصاميم التقليدية المعتمدة على المحيط وحده غير كافية إطلاقاً.</div>
+    </div>
+
+    <!-- ess-7 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 2 واجب منزلي + نموذج B) + الكتاب المدرسي صـ 57</div>
+        <div class="q-text">س7: اذكر الإجراءات الأمنية الأربعة المرتبطة بطبقات «الدفاع في العمق» الأربعة (مدخل الشبكة، مسار الاتصال، وضع الخوادم، الأجهزة الطرفية).</div>
+        <button class="btn-toggle" onclick="toggleAnswer('ess-7')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="ess-7" class="answer-box essay-answer">1. <strong>الطبقة 1 (مدخل الشبكة):</strong> منع الاتصال غير المصرح به باستخدام <strong>جدار الحماية (Firewall)</strong>.<br>
+2. <strong>الطبقة 2 (مسار الاتصال):</strong> تشفير مسار الاتصال ونقل البيانات باستخدام <strong>الشبكة الافتراضية الخاصة (VPN)</strong>.<br>
+3. <strong>الطبقة 3 (وضع الخوادم):</strong> فصل الخوادم المواجهة للجمهور عن الشبكة الداخلية باستخدام <strong>المنطقة المعزولة (DMZ)</strong>.<br>
+4. <strong>الطبقة 4 (الأجهزة الطرفية):</strong> تأمين أجهزة المستخدمين عبر تثبيت <strong>برنامج مكافحة الفيروسات</strong> والحفاظ على تحديث نظام التشغيل باستمرار.</div>
+    </div>
+
+    <!-- ess-8 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 3 تقييم أسبوعي نموذج A و C)</div>
+        <div class="q-text">س8: اشرح بالتفصيل كيف تحمي «الشبكة الافتراضية الخاصة (VPN)» البيانات المنقولة عبر شبكات Wi-Fi العامة من التنصت والتجسس.</div>
+        <button class="btn-toggle" onclick="toggleAnswer('ess-8')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="ess-8" class="answer-box essay-answer">تعد شبكات Wi-Fi العامة بيئات مفتوحة وغير موثوقة تمكّن المهاجمين الموجودين على نفس الشبكة من اعتراض حزم البيانات غير المشفرة والتنصت عليها. عند تشغيل VPN، يتم إنشاء نفق اتصالي مشفر (Tunnel) بين جهاز المستخدم وخادم المؤسسة، فتُشفر جميع البيانات المتبادلة بمفاتيح قوية. فإذا حاول أي طرف ثالث اعتراض حركة المرور، فلن يتمكن من قراءة البيانات أو استخراج كلمات المرور والمعلومات الحساسة.</div>
+    </div>
+
+    <!-- ess-9 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 3 تقييم أسبوعي نموذج B)</div>
+        <div class="q-text">س9: وضح كيف يساهم تطبيق «نهج انعدام الثقة (Zero Trust)» في التحقق من كل عملية وصول بناءً على فحص الهوية والصلاحيات والسياق.</div>
+        <button class="btn-toggle" onclick="toggleAnswer('ess-9')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="ess-9" class="answer-box essay-answer">يطبق نهج انعدام الثقة قاعدة التحقق الصارم في 3 أبعاد لكل طلب وصول:<br>
+1. <strong>الهوية:</strong> التأكد الدقيق من هوية المستخدم (عبر المصادقة القوية والمصادقة متعددة العوامل).<br>
+2. <strong>الصلاحيات:</strong> منح المستخدم الحد الأدنى من الامتيازات اللازمة لأداء عمله المحدد دون وصول مفتوح لبقية الموارد.<br>
+3. <strong>السياق:</strong> تقييم حالة الجهاز (هل هو محمي ومحدث؟)، والموقع الجغرافي، ووقت الطلب، لاكتشاف أي سلوك غير طبيعي ورفض الاتصال المشبوه.</div>
+    </div>
+
+    <!-- ess-10 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: كتاب التقييمات (الفترة 3 تقييم أسبوعي نموذج C)</div>
+        <div class="q-text">س10: اشرح كيف يتكامل كل من جدار الحماية، والشبكة الافتراضية الخاصة، والمنطقة المعزولة، وضوابط الأجهزة الطرفية لتشكيل استراتيجية دفاع في العمق متكاملة.</div>
+        <button class="btn-toggle" onclick="toggleAnswer('ess-10')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="ess-10" class="answer-box essay-answer">يعمل هذا التكامل على إنشاء حواجز أمنية متتالية:<br>
+• يمنع <strong>جدار الحماية</strong> عند المدخل أي محاولات وصول غير مصرح بها من الإنترنت.<br>
+• توفر <strong>الشبكة الافتراضية الخاصة (VPN)</strong> قناة مشفرة آمنة للبيانات أثناء انتقالها.<br>
+• تحصر <strong>المنطقة المعزولة (DMZ)</strong> الخطر عند الخوادم العامة وتمنع وصول المهاجم إلى الشبكة الداخلية في حال اختراق الخادم العام.<br>
+• تتصدى <strong>ضوابط الأجهزة الطرفية</strong> للبرمجيات الخبيثة وتمنع انتشارها من أجهزة المستخدمين إلى سائر الشبكة.<br>
+بذلك، إذا سقطت طبقة، تتدخل الطبقات الأخرى لإيقاف التهديد وحماية النظام ككل.</div>
+    </div>
+
+    <!-- ess-11 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: الكتاب المدرسي (قسم فكّر كمهندس صـ 64 - 65)</div>
+        <div class="q-text">س11 (تطبيق عملي مهندس): سيناريو شركة (موقع ويب عام، موظفون يعملون من المنزل، قاعدة بيانات عملاء سرية). كيف تصمم أمان شبكتها؟</div>
+        <button class="btn-toggle" onclick="toggleAnswer('ess-11')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="ess-11" class="answer-box essay-answer">• <strong>الأصول والتهديدات:</strong><br>
+1. الموقع العام: مهدد بهجمات الاختراق وحجب الخدمة.<br>
+2. الموظفون عن بُعد: مهددون بالتنصت على اتصالاتهم واعتراض بياناتهم.<br>
+3. قاعدة بيانات العملاء: مهددة بالسرقة وتسريب البيانات.<br>
+• <strong>التصميم المقترح والتبرير:</strong><br>
+- وضع الموقع العام في <strong>المنطقة المعزولة (DMZ)</strong> لحماية الشبكة الداخلية إذا تم اختراقه.<br>
+- إلزام الموظفين بالاتصال عبر <strong>الشبكة الافتراضية الخاصة (VPN)</strong> لتشفير مسار الاتصال.<br>
+- عزل قاعدة البيانات خلف <strong>جدار حماية داخلي</strong> وتأمينها بنهج <strong>انعدام الثقة (Zero Trust)</strong>.<br>
+- إلزام الأجهزة ببرامج مكافحة الفيروسات.<br>
+التكديس المتعدد يضمن عدم كشف قاعدة البيانات إذا تم اختراق الموقع أو جهاز أحد الموظفين.</div>
+    </div>
+
+    <!-- ess-12 -->
+    <div class="q-card">
+        <div class="q-source">📌 المصدر: الكتاب المدرسي (قسم طبّق ما تعلمته صـ 67)</div>
+        <div class="q-text">س12 (تحدي وتطبيق سحابي): ينقل مستشفى سجلات مرضاه إلى خدمة سحابية ويسمح للأطباء بالوصول إليها من المنزل. اقترح إجراءين أمنيين وحدد خطراً قد يظل قائماً.</div>
+        <button class="btn-toggle" onclick="toggleAnswer('ess-12')">👁️ إظهار الإجابة النموذجية</button>
+        <div id="ess-12" class="answer-box essay-answer">• <strong>الإجراء الأول:</strong> تطبيق <strong>نهج انعدام الثقة (Zero Trust)</strong> مع مصادقة متعددة العوامل (MFA) للتحقق من هوية الأطباء وصلاحياتهم وسياق أجهزتهم قبل منحهم الوصول لأي سجل.<br>
+• <strong>الإجراء الثاني:</strong> إلزام الأطباء باستخدام <strong>اتصال مشفر عبر VPN</strong> لضمان سرية السجلات أثناء النقل عبر الإنترنت المنزلي.<br>
+• <strong>الخطر المحتمل الذي قد يظل قائماً:</strong> خطر إصابة الجهاز الشخصي للطبيب ببرمجيات تجسس أو برامج تسجيل ضربات المفاتيح (Keyloggers)، أو خطأ بشري ناتج عن مشاركة بيانات الدخول.</div>
+    </div>
+
+</div>
+
+<footer>
+    <div>جميع الحقوق محفوظة © <strong>منصة كودجي (CodeG) الرقمية</strong></div>
+    <div class="footer-line">
+        <span>إعداد: مهندس أندرو مجدي</span>
+        <span class="contact-badge">📞 01555772562</span>
+    </div>
+</footer>
+
+<script>
+    function toggleAnswer(id) {
+        var answerBox = document.getElementById(id);
+        var btn = answerBox['previousElementSibling'];
+        
+        if (answerBox['style']['display'] === "block") {
+            answerBox['style']['display'] = "none";
+            btn['innerHTML'] = "👁️ إظهار الإجابة";
+        } else {
+            answerBox['style']['display'] = "block";
+            btn['innerHTML'] = "🙈 إخفاء الإجابة";
+        }
+    }
+</script>
+
+</body>
+</html>
